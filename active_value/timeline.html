@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html > 
+  <head> 
+    <meta http - equiv = "Content-Type" content = "text/html; charset=UTF-8">
+    <link rel = "stylesheet" href = "./data/bootstrap.min.css" >
+    <link rel = "stylesheet" href = "./data/style.css" >
+    <script src = "./data/jquery.min.js" > </script>
+    <script src = "./data/bootstrap.min.js" > </script>
+    <script src = "./data/jquery.graspSchedule.js" > </script>
+    <script src = "./data/date.json" > </script>
+
+    <script type = "text/javascript" >
+      $(document).ready(function() {
+
+        $('#test1').graspSchedule(data);
+
+        <!--$.getJSON("./data/date.json", function(data2) {-->
+          <!--$('#test1').graspSchedule(data2);-->
+        <!--});-->
+
+        prettyPrint();
+
+      }); 
+    </script>
+  </head> 
+
+  <body style = "" >
+
+    <h1> Demo </h1> 
+
+    <!-- <script type = "text/javascript" src = "./data/f.js" ></script> -->
+
+    <div class = "test" id = "test1" style = "position: relative;" > </div >
+
+  </body>
+
+</html >

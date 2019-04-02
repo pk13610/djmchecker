@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html > 
+  <head> 
+    <meta http - equiv = "Content-Type" content = "text/html; charset=UTF-8">
+    <link rel = "stylesheet" href = "./data/bootstrap.min.css" >
+    <link rel = "stylesheet" href = "./data/style.css" >
+    <script src = "./data/jquery.min.js" > </script>
+    <script src = "./data/bootstrap.min.js" > </script>
+    <!-- <script src = "./data/jquery.graspSchedule.js" > </script> -->
+    <link rel="stylesheet" href="./data/dist/jquery.timeline.min.css">
+    <script src="./data/dist/jquery.timeline.min.js"></script>
+    <script src = "./data/date.json" > </script>
+
+  </head> 
+
+  <bodY>
+
+  <!-- Timeline Block -->
+  <div id="myTimeline"></div>
+  <!-- Timeline Event Detail View Area (optional) -->
+  <div class="timeline-event-view"></div>
+
+  <script type = "text/javascript" >
+    var data = [];
+    function covert(dd){
+      var d = new Date(dd);
+      return dd;
+    };
+
+    $(document).ready(function() {
+
+      var starttime = "";
+      dataMap.schedules.forEach(element => {
+        if (starttime == "") {
+          starttime = covert(element["start"]);
+        };
+        data.push({
+          "id": element["lnum"],
+          "start": covert(element["start"]),
+          "end": covert(element["end"]),
+          "content": element["title"],
+          "label": element["title"],
+          "row": element["lnum"],
+        });
+      });
+
+      var tl = $('#myTimeline').Timeline({
+        type: "bar",
+        startDatetime: starttime,
+        scale: "day",
+        rows: 22,
+      });
+
+      dataMap.schedules.forEach(element => {
+        var tmp = {
+              "id": element["lnum"],
+              "start": covert(element["start"]),
+              "end": covert(element["end"]),
+              "content": element["title"],
+              "label": element["title"],
+              "row": element["lnum"],
+            };
+        tl.Timeline('addEvent',[tmp],
+          function( elm, opts, usrdata ){
+              console.log( usrdata[0] ) // show "Added Events!" in console
+          },
+          'Added Events!'
+        );
+      });
+
+    });
+  </script> 
+
+<!-- <div class = "test" id = "test1" style = "position: relative;" > 
+</div >
+<script type = "text/javascript" >
+  $(document).ready(function() {
+    $.getJSON("./data/date.json", function(data2) {
+      $('#test1').graspSchedule(data2);
+    });
+
+    prettyPrint();
+  }); 
+</script> -->
+
+  </body>
+
+</html >
